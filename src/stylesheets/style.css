@@ -114,22 +114,6 @@ body {
     background-color: transparent;
 }
 
-#soundcloudLink {
-    position: absolute;
-    font-size: 15px;
-    font-weight: bold;
-    top: 90%;
-    left: 80%;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    text-decoration: underline;
-    transition: color 0.2s
-}
-
-#soundcloudLink:hover {
-    color: rgb(55, 55, 52);
-}
-
 @keyframes down {
     0%, 100%
     {
