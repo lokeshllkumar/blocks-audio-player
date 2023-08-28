@@ -1,14 +1,27 @@
 const blocksButton = document.getElementById("blocksButton");
-const searchBar = document.getElementById("searchBar");
-const searchButton = document.getElementById("searchButton");
+const audioFileLoader = document.createElement("input");
+const audioPlayer = document.getElementById("audioPlayer");
+audioFileLoader.type = "file";
+audioFileLoader.accept = ".mp3 , .wav";
 
-blocksButton.addEventListener("click", function() {
-    blocksButton.style.display= "none";
-    searchBar.classList.remove("hidden");
+blocksButton.addEventListener("click", function() 
+{
+    audioFileLoader.click();
+})
 
-    setTimeout(function() {
-        centerButton.style.display = "none";
-        searchBar.style.display = "block";
-        searchButton.style.display = "block";
-    }, 300);
-});
+audioFileLoader.addEventListener("change", function()
+{
+    blocksButton.style.display = "none";
+    audioPlayer.classList.remove("hidden");
+    if (audioFileLoader.files.length > 0)
+    {
+        const selectedAudioFile = audioFileLoader.files[0];
+        const audioURL = URL.createObjectURL(selectedAudioFile);
+        audioPlayer.src = audioURL;
+        if (selectedAudioFile)
+        {
+            console.log("Audio file selected: ", selectedAudioFile.name);
+
+        }
+    }
+})
