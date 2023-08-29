@@ -1,5 +1,3 @@
-console.log("hello world!");
-
 document.addEventListener("DOMContentLoaded", function()
 {
     const audioPlayer = document.getElementById("audioPlayer");
