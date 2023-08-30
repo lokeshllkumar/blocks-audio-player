@@ -1,0 +1,25 @@
+#blocksButton
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    font-size: 88px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#blocksButton:hover
+{
+    background-color: rgb(255, 255, 255, 0.9);
+    color: rgb(55, 55, 52);
+}
+
+.hidden
+{
+    display: none;
+}
