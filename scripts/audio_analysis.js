@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function()
 {
     const audioPlayer = document.getElementById("audioPlayer");
-    const gradientContainer = document.querySelector(".container");
+    const upElement = document.getElementById('up');
+    const downElement = document.getElementById('down');
+    const rightElement = document.getElementById('right');
+    const leftElement = document.getElementById('left');
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const analyser = audioContext.createAnalyser();
@@ -26,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function()
             sum += frequencyData[i];
         }
 
-        const curVol = sum / 50;
+        const curVol = sum / 101;
 
         if (curVol - prevVol > colorChangeThreshold)
         {
@@ -35,7 +38,11 @@ document.addEventListener("DOMContentLoaded", function()
             const blue = frequencyData[200];
 
             const gradient = `linear-gradient(75deg, rgb(${red}, ${green}, ${blue}), rgb(${blue}, ${red}, ${green}))`;
-            gradientContainer.computedStyleMap.backgroundColor = gradient;
+            upElement.style.backgroundImage = gradient;
+            downElement.style.backgroundImage = gradient;
+            rightElement.style.backgroundImage = gradient;
+            leftElement.style.backgroundImage = gradient;
+
         }
 
         prevVol = curVol;
