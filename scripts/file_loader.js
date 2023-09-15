@@ -13,6 +13,7 @@ audioFileLoader.addEventListener("change", function()
 {
     blocksButton.style.display = "none";
     audioPlayer.classList.remove("hidden");
+    queueButton.classList.remove("hidden");
     if (audioFileLoader.files.length > 0)
     {
         const selectedAudioFile = audioFileLoader.files[0];
