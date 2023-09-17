@@ -28,7 +28,7 @@ body
     width: 800px;
     left: 70%;
     border-radius: 50%;
-    background-image: linear-gradient(75deg, rgb(38, 172, 182), rgb(90, 24, 243));
+    background-image: linear-gradient(75deg, rgb(43, 145, 152), rgb(90, 24, 243));
     animation: up 30s infinite;
     filter: blur(37px);
 }
