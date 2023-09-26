@@ -1,55 +1,56 @@
-document.addEventListener("DOMContentLoaded", function()
+const player = document.getElementById('audioPlayer');
+const rightElement = document.getElementById('right');
+let audioContext;
+
+let analyser;
+const FFTSize = 2048;
+
+const minFrequency = 100; //100Hz
+const maxFrequency = 900; //900Hz
+
+function initAudio()
 {
-    const audioPlayer = document.getElementById("audioPlayer");
-    const upElement = document.getElementById('up');
-    const downElement = document.getElementById('down');
-    const rightElement = document.getElementById('right');
-    const leftElement = document.getElementById('left');
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioContext.createAnalyser();
+    analyser.minDecibels = -100;
+    analyser.maxDecibels = 0;
+    analyser.fftSize = FFTSize;
 
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
+    const sampleRate = audioContext.sampleRate;
+    const binFrequency = sampleRate / FFTSize;
+    const minBin = Math.floor(minFrequency / binFrequency);
+    const maxBin = Math.floor(maxFrequency / binFrequency);
 
-    const source = audioContext.createMediaElementSource(audioPlayer);
-    source.connect(analyser);
-    analyser.connect(audioContext.destination);  
+    const audioSource = audioContext.createMediaElementSource(player);
+    audioSource.connect(analyser);
+    analyser.connect(audioContext.destination);
 
-    analyser.fftSize = 256;
-    const frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    player.play();
 
-    let prevVol = 0;
-    let colorChangeThreshold = 20;
+    changeRightSectionColor(minBin, maxBin);
+}
 
-    function updateColorGradient()
+function changeRightSectionColor(minBin, maxBin)
+{
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(dataArray);
+
+    const loudnessThreshold = 50;
+    const averageAmplitude = dataArray.slice(minBin, maxBin + 1).reduce((acc, value) => acc + value, 0) / dataArray.length;
+
+    if (averageAmplitude > loudnessThreshold)
     {
-        analyser.getByteFrequencyData(frequencyData);
-
-        let sum = 0;
-        for (let i = 50; i < 100; i++)
-        {
-            sum += frequencyData[i];
-        }
-
-        const curVol = sum / 101;
-
-        if (curVol - prevVol > colorChangeThreshold)
-        {
-            const red = frequencyData[0];
-            const green = frequencyData[100];
-            const blue = frequencyData[200];
-
-            const gradient = `linear-gradient(75deg, rgb(${red}, ${green}, ${blue}), rgb(${blue}, ${red}, ${green}))`;
-            upElement.style.backgroundImage = gradient;
-            downElement.style.backgroundImage = gradient;
-            rightElement.style.backgroundImage = gradient;
-            leftElement.style.backgroundImage = gradient;
-
-        }
-
-        prevVol = curVol;
-        requestAnimationFrame(updateColorGradient);
+        console.log('threshold crossed');
+        rightElement.style.backgroundImage = `linear-gradient(75deg, rgb(0, 0, 0), rgb(0, 0, 0))`;
+    }
+    else
+    {
+        console.log('threshold not crossed');
+        rightElement.style.backgroundImage = 'linear-gradient(75deg, rgb(208, 187, 28), rgb(99, 165, 144))';
     }
 
-    audioPlayer.play();
-    
-    updateColorGradient();
-});
+
+    requestAnimationFrame(changeRightSectionColor);
+}
+
+initAudio();
