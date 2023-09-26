@@ -1,5 +1,12 @@
 const player = document.getElementById('audioPlayer');
+
 const rightElement = document.getElementById('right');
+const leftElement = document.getElementById('left');
+const leftElement1 = document.getElementById('left-1');
+const upElement = document.getElementById('up');
+const upElement1 = document.getElementById('up-1');
+const downElement = document.getElementById('down');
+
 let audioContext;
 
 let analyser;
