@@ -12,8 +12,8 @@ let audioContext;
 let analyser;
 const FFTSize = 2048;
 
-const minFrequency = 100; //100Hz
-const maxFrequency = 900; //900Hz
+const minFrequencyRight = 100; //100Hz
+const maxFrequencyRight = 900; //900Hz
 
 function initAudio()
 {
@@ -25,8 +25,8 @@ function initAudio()
 
     const sampleRate = audioContext.sampleRate;
     const binFrequency = sampleRate / FFTSize;
-    const minBin = Math.floor(minFrequency / binFrequency);
-    const maxBin = Math.floor(maxFrequency / binFrequency);
+    const minBin = Math.floor(minFrequencyRight / binFrequency);
+    const maxBin = Math.floor(maxFrequencyRight / binFrequency);
 
     const audioSource = audioContext.createMediaElementSource(player);
     audioSource.connect(analyser);
@@ -53,7 +53,7 @@ function changeRightSectionColor(minBin, maxBin)
     else
     {
         console.log('threshold not crossed');
-        rightElement.style.backgroundImage = 'linear-gradient(75deg, rgb(208, 187, 28), rgb(99, 165, 144))';
+        rightElement.style.backgroundImage = 'linear-gradient(75deg, rgb(0, 0, 0), rgb(0, 0, 0));' // 'linear-gradient(75deg, rgb(208, 187, 28), rgb(99, 165, 144))';
     }
 
 
