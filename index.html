@@ -25,6 +25,26 @@
         <section id = "left-1"></section>
         <section id = "right"></section>
         <button id = "blocksButton" class = "btn btn-primary"><b>BLOCKS</b></button>
+
+        <div class = "audio-player">
+            <div class = "cover-art">
+                <img src = "temp.jpg" alt = "Album Cover Art">
+            </div>
+            <div class = "audio-controls">
+                <div class = "progress-bar">
+                    <div class = "progress"></div>
+                </div>
+            </div>
+            <div class = "time">
+                <span class = "elapsed-time">0:00</span>
+                <span class = "remaining-time">0:00</span>
+            </div>
+            <div class = "player-buttons">
+                <button class = "backward-button">⏪</button>
+                <button class = "play-button">▶️</button>
+                <button class = "forward-button">⏩</button>
+            </div>
+        </div>
         <audio id = "audioPlayer" class = "hidden" controls>Audio file not supported</audio> <!-- placeholder audio player -->
         <button id = "queueButton" class = "btn btn-primary hidden"><b>QUEUE</b></button>
     </body>
