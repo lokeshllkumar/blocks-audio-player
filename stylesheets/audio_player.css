@@ -1,8 +1,120 @@
-#audioPlayer
+.audio-player
+{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
+.cover-art img
+{
+    margin-top: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 30px;
+}
+
+#progressBar
+{
+    width: 100%;
+    height: 20px;
+}
+
+#progressBar
+{
+    position: relative;
+}
+
+.time
+{
+    height: 10vh;
+    font-size: 18px;
+    padding: 0; 
+    color: rgb(255, 255, 255);
+}
+
+.player-buttons
+{
+    margin-top: 20px;
+    background-color: transparent;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+    font-weight: bold;
+}
+
+.player-buttons:hover
+{
+    background-color: transparent;
+    color: rgb(55, 55, 32);
+}
+
+#queueButton
 {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 200%;
     transform: translate(-50%, -50%);
-    padding: 10px 10px;
+    font-size: 20px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#queueButton:hover
+{
+    background-color: rgb(255, 255, 255, 0.9);
+    color: rgb(55, 55, 32);
+}
+
+.song-info
+{
+    display: flex;
+    color:rgb(55, 55, 32);
+    flex-direction: column;
+    text-align: left;
+    position: absolute;
+    padding: 0;
+    top: 0%;
+    left: -140%;
+}
+
+.song-info span
+{
+    display: inline-block;
+    margin: 0;
+    width: 600px;
+    padding: 0;
+}
+
+#artistName
+{
+    color: rgb(55, 55, 32, 0.6);
+    height: 30px;
+    line-height: 30px;
+    font-size: 30px;
+}
+
+#trackTitle
+{
+    color: rgb(55, 55, 32, 1);
+    height: 40px;
+    line-height: 40px;
+    font-size: 40px;
+}
+
+#albumTitle
+{
+    color: rgb(55, 55, 32, 0.8);
+    height: 35px;
+    line-height: 35px;
+    font-size: 35px;
 }

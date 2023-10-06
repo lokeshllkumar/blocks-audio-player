@@ -1,19 +1,19 @@
 const blocksButton = document.getElementById("blocksButton");
 const audioFileLoader = document.createElement("input");
-const audioPlayer = document.getElementById("audioPlayer");
+const audioPlayer = document.querySelector(".audio-player");
+audioPlayer.style.display = "none";
 audioFileLoader.type = "file";
 audioFileLoader.accept = ".mp3 , .wav";
 
 blocksButton.addEventListener("click", function() 
 {
     audioFileLoader.click();
-})
+});
 
 audioFileLoader.addEventListener("change", function()
 {
     blocksButton.style.display = "none";
-    audioPlayer.classList.remove("hidden");
-    queueButton.classList.remove("hidden");
+    audioPlayer.style.display = "block";
     if (audioFileLoader.files.length > 0)
     {
         const selectedAudioFile = audioFileLoader.files[0];
