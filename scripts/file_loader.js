@@ -1,6 +1,8 @@
 const blocksButton = document.getElementById("blocksButton");
 const audioFileLoader = document.createElement("input");
 const audioPlayer = document.querySelector(".audio-player");
+const musicPlayer = document.getElementById("musicPlayer");
+
 audioPlayer.style.display = "none";
 audioFileLoader.type = "file";
 audioFileLoader.accept = ".mp3 , .wav";
@@ -18,7 +20,7 @@ audioFileLoader.addEventListener("change", function()
     {
         const selectedAudioFile = audioFileLoader.files[0];
         const audioURL = URL.createObjectURL(selectedAudioFile);
-        audioPlayer.src = audioURL;
+        musicPlayer.src = audioURL;
         if (selectedAudioFile)
         {
             console.log("Audio file selected: ", selectedAudioFile.name);

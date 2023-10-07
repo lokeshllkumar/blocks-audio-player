@@ -1,0 +1,47 @@
+const playButton = document.getElementById('playButton');
+const backwardButton = document.getElementById('backwardButton');
+const forwardButton = document.getElementById('forwardButton');
+
+const musicPlayer1 = document.getElementById('musicPlayer');
+
+//an object for #audioPlayer is already present in file_loader.js
+
+playButton.addEventListener('click', () => 
+{
+    if (musicPlayer1.paused)
+    {
+        musicPlayer1.play();
+        playButton.textContent = 'II';
+    }
+    else
+    {
+        musicPlayer1.pause();
+        playButton.textContent = 'I>';
+    }
+});
+
+musicPlayer1.addEventListener('ended', () =>
+{
+    playButton.textContent = 'I>';
+});
+
+musicPlayer1.addEventListener('timeupdate', () =>
+{
+
+    const elapsedTime = document.querySelector('.elapsed-time');
+
+    const elapsedTimeMins = Math.floor(musicPlayer1.currentTime / 60);
+    const elapsedTimeSecs = Math.floor(musicPlayer1.currentTime % 60);
+
+    elapsedTime.textContent = `${elapsedTimeMins}:${elapsedTimeSecs < 10 ? '0' : ''}${elapsedTimeSecs}`;
+
+    const totalTime = document.querySelector('.total-time');
+
+    if (!NaN(totalTime.duration))
+    {
+        const totalTimeMins = Math.floor(musicPlayer1.duration / 60);
+        const totalTimeSecs = Math.floor(musicPlayer1.duration % 60);
+
+        totalTime.textContent = `${totalTimeMins}:${totalTimeSecs < 10 ? '0' : ''}${totalTimeSecs}`;
+    }
+});

@@ -11,9 +11,11 @@
         <link rel = "stylesheet" href = "stylesheets/blocks_button.css"> 
         <link rel = "stylesheet" href = "stylesheets/gradient_animation.css">
         <link rel = "stylesheet" href = "stylesheets/audio_player.css">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
         <script src = "https://kit.fontawesome.com/ba57058827.js" crossorigin = "anonymous"></script>
         <script src = "scripts/file_loader.js" defer></script>
         <script src = "scripts/track_info.js" defer></script>
+        <script src = "scripts/audio_player_controls.js" defer></script>
         <title>blocks</title>
     </head>
     <body class = "container">
@@ -32,23 +34,24 @@
                 <div class = "progress"></div>
             </div>
             <div class = "time">
-                <span class = "elapsed-time">0:00 / </span>
-                <span class = "remaining-time">0:00</span>
+                <span class = "elapsed-time">0:00</span>
+                <span> / </span>;
+                <span class = "total-time">0:00</span>
             </div>
             <div class = "player-buttons">
                 <button id = "shuffleButton" class = "btn btn-primary player-buttons">SH</button>
                 <button id = "backwardButton" class = "btn btn-primary player-buttons"><<</button>
-                <button id = "playButton" class = "btn btn-primary player-buttons">II</button>
+                <button id = "playButton" class = "btn btn-primary player-buttons">I></button>
                 <button id = "forwardButton" class = "btn btn-primary player-buttons">>></button>
                 <button id = "loopButton" class = "btn btn-primary player-buttons">OO</button>
             </div>
             <button id = "queueButton" class = "btn btn-primary"><b>QUEUE</b></button>
             <div class = "song-info">
-                <span id = "artistName">JAMES BLAKE</span>
-                <span id = "trackTitle">NIGHT SKY BITCHESSSSS</span>
-                <span id = "albumTitle">PLAYING ROBOTS INTO HEAVEN</span>
+                <span id = "artistName">ARTIST</span>
+                <span id = "trackTitle">TRACK</span>
+                <span id = "albumTitle">ALBUM</span>
             </div>
         </div>
-        <audio id = "audioPlayer" class = "hidden" controls>Audio file not supported</audio> <!-- placeholder audio player -->
+        <audio id = "musicPlayer" class = "hidden" controls>Audio file not supported</audio> <!-- placeholder audio player -->
     </body>
 </html>
