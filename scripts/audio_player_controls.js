@@ -45,3 +45,5 @@ musicPlayer1.addEventListener('timeupdate', () =>
         totalTime.textContent = `${totalTimeMins}:${totalTimeSecs < 10 ? '0' : ''}${totalTimeSecs}`;
     }
 });
+
+// must add functionality for the backward, forward, shuffle and loop buttons
