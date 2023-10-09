@@ -1,5 +1,3 @@
-import Vibrant from 'node-vibrant';
-
 const blocksButton = document.getElementById("blocksButton");
 const audioFileLoader = document.createElement("input");
 const audioPlayer = document.querySelector(".audio-player");
@@ -53,8 +51,6 @@ audioFileLoader.addEventListener("change", function()
                 {
                     console.log("Metadata retrieval failed!");
                 }
-
-                backgroundUpdate();
             },
             onError: function(error)
             {
@@ -73,30 +69,4 @@ function trackDetails(artist, track, album)
     artistName.textContent = `${artist.toUpperCase()}`;
     trackTitle.textContent = `${track.toUpperCase()}`;
     albumTitle.textContent = `${album.toUpperCase()}`;
-}
-
-function backgroundUpdate()
-{
-    Vibrant.from(coverArt.src).getPalette((err, palette) => 
-    {
-        if (err)
-        {
-            console.log(err);
-            return;
-        }
-
-        const up = document.getElementById('up');
-        const up1 = document.getElementById('up-1');
-        const down = document.getElementById('down');
-        const left = document.getElementById('left');
-        const left1 = document.getElementById('left-1');
-        const right = document.getElementById('right');
-
-        up.style.backgroundImage = `linear-gradient(75deg, ${palette.LightVibrant.getHex()}, ${palette.Vibrant.getHex()})`;
-        up1.style.backgroundImage = `linear-gradient(75deg, ${palette.Muted.getHex()}, ${palette.DarkMuted.getHex()})`;
-        down.style.backgroundImage = `linear-gradient(75deg, ${palette.LightMuted.getHex()}, ${palette.Vibrant.getHex()})`;
-        left.style.backgroundImage = `linear-gradient(75deg, ${palette.DarkMuted.getHex()}, ${palette.Vibrant.getHex()})`;
-        left1.style.backgroundImage = `linear-gradient(75deg, ${palette.LightMuted.getHex()}, ${palette.Muted.getHex()})`;
-        right.style.backgroundImage = `linear-gradient(75deg, ${palette.Vibrant.getHex()}, ${palette.DarkVibrant.getHex()})`;
-    });
 }
