@@ -2,6 +2,7 @@ const blocksButton = document.getElementById("blocksButton");
 const audioFileLoader = document.createElement("input");
 const audioPlayer = document.querySelector(".audio-player");
 const musicPlayer = document.getElementById("musicPlayer");
+const coverArt = document.getElementById("coverArt");
 
 audioPlayer.style.display = "none";
 audioFileLoader.type = "file";
@@ -21,10 +22,51 @@ audioFileLoader.addEventListener("change", function()
         const selectedAudioFile = audioFileLoader.files[0];
         const audioURL = URL.createObjectURL(selectedAudioFile);
         musicPlayer.src = audioURL;
-        if (selectedAudioFile)
-        {
-            console.log("Audio file selected: ", selectedAudioFile.name);
+        
+        jsmediatags.read(selectedAudioFile, {
+            onSuccess: function(tag)
+            {
+                if (tag.tags.artist && tag.tags.title && tag.tags.album)
+                {
+                    const artist = tag.tags.artist;
+                    const track = tag.tags.title;
+                    const album = tag.tags.album;
 
-        }
+                    trackDetails(artist, track, album);
+
+                    if (tag.tags.picture)
+                    {
+                        const pic = tag.tags.picture;
+                        const base64String = btoa(String.fromCharCode.apply(null, pic.data));
+                        const coverArtURL = `data:${pic.format};base64,${base64String}`;
+
+                        coverArt.src = coverArtURL;
+                    }
+                    else
+                    {
+                        coverArt.src = "public/prih.jpg";
+                    }
+                }
+                else
+                {
+                    console.log("Metadata retrieval failed!");
+                }
+            },
+            onError: function(error)
+            {
+                console.error("Error in reading metadata:", error,type, error.info);
+            }
+        });
     }
-})
+});
+
+function trackDetails(artist, track, album)
+{
+    const artistName = document.getElementById("artistName");
+    const trackTitle = document.getElementById("trackTitle");
+    const albumTitle = document.getElementById("albumTitle");
+
+    artistName.textContent = `${artist.toUpperCase()}`;
+    trackTitle.textContent = `${track.toUpperCase()}`;
+    albumTitle.textContent = `${album.toUpperCase()}`;
+}

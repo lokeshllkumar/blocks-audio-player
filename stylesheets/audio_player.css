@@ -18,17 +18,6 @@
     padding: 30px;
 }
 
-#progressBar
-{
-    width: 100%;
-    height: 20px;
-}
-
-#progressBar
-{
-    position: relative;
-}
-
 .time
 {
     height: 10vh;
@@ -117,4 +106,9 @@
     height: 35px;
     line-height: 35px;
     font-size: 35px;
+}
+
+.loop-active
+{
+    color: rgb(55, 55, 32);
 }
