@@ -12,12 +12,11 @@
         <link rel = "stylesheet" href = "stylesheets/gradient_animation.css">
         <link rel = "stylesheet" href = "stylesheets/audio_player.css">
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
         <script src = "https://kit.fontawesome.com/ba57058827.js" crossorigin = "anonymous"></script>
         <script src = "scripts/file_loader.js" defer></script>
-        <script src = "scripts/track_info.js" defer></script>
+        <script src = "scripts/audio_analysis.js" defer></script>
         <script src = "scripts/audio_player_controls.js" defer></script>
-        <script src = "scripts/queue.js" defer></script>
-        <script src = "scripts/metadata_retrieval.js" defer></script>
         <title>blocks</title>
     </head>
     <body class = "container">
@@ -53,7 +52,7 @@
         </div>
 
         <audio id = "musicPlayer" class = "hidden" preload = "metadata" controls>Audio file not supported</audio> <!-- placeholder audio player -->
-        <div id = "queuePopup" class = "popup hidden">
-        </div>
+        <div id = "queuePopup" class = "popup hidden"></div>
+        <canvas id = "coverArtCanvas" style = "display: none;"></canvas>
     </body>
 </html>
