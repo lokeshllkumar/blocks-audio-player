@@ -44,7 +44,7 @@ audioFileLoader.addEventListener("change", function()
                     }
                     else
                     {
-                        coverArt.src = "public/prih.jpg";
+                        coverArt.src = "public/default.jpg";
                     }
                 }
                 else
