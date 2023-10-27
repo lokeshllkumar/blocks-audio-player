@@ -165,3 +165,8 @@ body
         left: 1100px;
     }
 }
+
+.transition-effect
+{
+    transition: background-color 0.5s ease-in-out;
+}
