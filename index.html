@@ -15,9 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
         <script src = "https://kit.fontawesome.com/ba57058827.js" crossorigin = "anonymous"></script>
         <script src = "scripts/file_loader.js" defer></script>
-        <script src = "scripts/gradient_manipulation.js" defer></script>
         <script src = "scripts/audio_analysis.js" defer></script>
-        <script src = "scripts/audio_player_controls.js" defer></script>
         <title>blocks</title>
     </head>
     <body class = "container">
@@ -28,7 +26,7 @@
         <section id = "left-1" class = "transition-effect"></section>
         <section id = "right" class = "transition-effect"></section>
         <button id = "blocksButton" class = "btn btn-primary"><b>BLOCKS</b></button>
-        <div class = "audio-player hidden">
+        <div class = "audio-player">
             <div class = "cover-art">
                 <img id = "coverArt" alt = "Album Cover Art" onerror = "setDefaultImage()" height = "500" width = "500">
             </div>
@@ -38,13 +36,12 @@
                 <span class = "total-time">0:00</span>
             </div>
             <div class = "player-buttons">
-                <button id = "shuffleButton" class = "btn btn-primary player-buttons">SH</button>
                 <button id = "backwardButton" class = "btn btn-primary player-buttons"><<</button>
                 <button id = "playButton" class = "btn btn-primary player-buttons">I></button>
                 <button id = "forwardButton" class = "btn btn-primary player-buttons">>></button>
-                <button id = "loopButton" class = "btn btn-primary player-buttons">OO</button>
             </div>
-            <button id = "queueButton" class = "btn btn-primary"><b>QUEUE</b></button>
+            <button id = "queueButton" class = "btn btn-primary"><b>ADD</b></button>
+            <input type = "file" id = "filePicker" class = "hidden" accept = ".mp3, .wav" multiple>
             <div class = "song-info">
                 <span id = "artistName">ARTIST</span>
                 <span id = "trackTitle">TRACK</span>
@@ -53,7 +50,6 @@
         </div>
 
         <audio id = "musicPlayer" class = "hidden" preload = "metadata" controls>Audio file not supported</audio> <!-- placeholder audio player -->
-        <div id = "queuePopup" class = "popup hidden"></div>
-        <canvas id = "coverArtCanvas" style = "display: none;"></canvas>
+        </section>
     </body>
 </html>
