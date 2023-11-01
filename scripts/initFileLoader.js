@@ -185,7 +185,7 @@ function metadataRetrieval(selectedAudioFile)
 
                     coverArt.src = coverArtURL;
                 }
-                console.log("metadata updation successful!");
+                console.log("Metadata updation successful!");
             }
             else
             {
